@@ -1,8 +1,14 @@
 # Udacity Feed Reader
-The goal of this project is learn how to use Jasmine to write a number of tests against a pre-existing application.
+The goal of this project is to learn how to use Jasmine to write a number of tests against a pre-existing application.
 
 ##Description
-The tests check the application is doing what it was done for in terms of business logic, event handling and DOM manipulation.
+The tests check the application is doing what it was done for in terms of business logic, event handling and DOM manipulation. Tests:
+1. The feeds have a URL defined and the URL is not empty.
+2. The feeds have a name defined and the name is not empty.
+3. The menu element is hidden by default.
+4. The menu displays when is clicked and hides when clicked again.
+5. When the feeds are loaded and completed, there is at least a single feed element.
+6. When a new feed is loaded, the content actually changes
 
 ##Libraries used
 - Jasmine 2.1.2

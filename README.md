@@ -3,6 +3,7 @@ The goal of this project is to learn how to use Jasmine to write a number of tes
 
 ##Description
 The tests check the application is doing what it was done for in terms of business logic, event handling and DOM manipulation. Tests:
+
 1. The feeds have a URL defined and the URL is not empty.
 2. The feeds have a name defined and the name is not empty.
 3. The menu element is hidden by default.

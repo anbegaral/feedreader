@@ -92,13 +92,13 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         it('has at least one element', function(done){
            //calling the loadFeed function before the test
-           beforeEach(function(done){
-             loadFeed();
-             //it is finished before executing thre test
-             done();
-           });
+         beforeEach(function(done){
+           loadFeed(0);
+           //it is finished before executing the test
+           done();
+         });
+         it('has at least one element', function(done){
            //the .entry element exists
            expect($('.feed .entry')).toBeDefined();
            done();
@@ -117,23 +117,25 @@ $(function() {
          //using beforeEach because the function is asynchronous and we need the content once it is finished
           beforeEach(function(done) {
             loadFeed(0, function(){
-             initialLoad = $('.feed').children().html();
+             initialLoad = $('.feed .entry h2').text();
              done();
-             return initialLoad;
             });
           });
           //calling loadFeed with different index and storing content in variable secondLoad
-          beforeEach(function(done) {
+         beforeEach(function(done) {
             loadFeed(1, function(){
-              secondLoad = $('.feed').children().html();
+              secondLoad = $('.feed .entry h2').text();
               done();
-              return secondLoad;
             });
           });
         //checking the contents are different
          it('changes the content', function(done){
-            expect(secondLoad).toEqual(initialLoad);
-            done();
+           expect(initialLoad).not.toBe(secondLoad);
+           done();
          });
+         //Loading again the initial feeds
+         afterAll(function(done){
+           loadFeed(0, done);
+         })
    });
 }());

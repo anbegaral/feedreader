@@ -115,12 +115,12 @@ $(function() {
          var secondLoad;
          //calling loadFeed and storing the content in variable initialLoad
          //using beforeEach because the function is asynchronous and we need the content once it is finished
-          beforeEach(function(done) {
+         beforeEach(function(done) {
             loadFeed(0, function(){
-             initialLoad = $('.feed .entry h2').text();
-             done();
+              initialLoad = $('.feed .entry h2').text();
+              done();
             });
-          });
+         });
           //calling loadFeed with different index and storing content in variable secondLoad
          beforeEach(function(done) {
             loadFeed(1, function(){
@@ -128,14 +128,16 @@ $(function() {
               done();
             });
           });
-        //checking the contents are different
+
+          //Loading again the initial feeds
+          afterAll(function(done){
+            loadFeed(0, done);
+          });
+
+         //checking the contents are different
          it('changes the content', function(done){
            expect(initialLoad).not.toBe(secondLoad);
            done();
          });
-         //Loading again the initial feeds
-         afterAll(function(done){
-           loadFeed(0, done);
-         })
    });
 }());
